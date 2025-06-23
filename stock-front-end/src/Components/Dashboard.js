@@ -15,7 +15,7 @@ import socket from '../utils/socket';
 function Dashboard({isInvestModalOpen = false, onClose}) {
   const [portfolio, setPortfolio] = useState(null);
   const [selectedAssetId, setSelectedAssetId] = useState(null);
-  
+  const [loading, setLoading] = useState(false);
 
   const user = getCurrentUser();
   const token = localStorage.getItem("token");
@@ -24,6 +24,7 @@ function Dashboard({isInvestModalOpen = false, onClose}) {
     try {
       const res = await axios.get(`${baseURL}portfolio/${user?.id}`, {headers: {Authorization: `Bearer ${token}`}});
       setPortfolio(res.data);
+      setLoading(false);
       if (!selectedAssetId && res.data?.holdings?.length > 0) {
         setSelectedAssetId(res.data.holdings[0].id);
       }
@@ -39,7 +40,7 @@ function Dashboard({isInvestModalOpen = false, onClose}) {
       fetchPortfolio();
     });
     return () => socket.off('portfolioUpdate');
-  }, [user?.id]);
+  }, [user?.id, loading]);
 
   const handleSelectAsset = (assetId) => {
     setSelectedAssetId(assetId);
@@ -64,6 +65,7 @@ function Dashboard({isInvestModalOpen = false, onClose}) {
       <InvestModal
         isOpen={isInvestModalOpen}
         onClose={onClose}
+        setLoading={setLoading}
       />
     </div>
   );

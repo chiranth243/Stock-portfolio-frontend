@@ -6,7 +6,7 @@ import { getCurrentUser } from '../utils/auth';
 // Import our glorious new stylesheet
 import './InvestModal.css';
 
-const InvestModal = ({ isOpen, onClose }) => {
+const InvestModal = ({ isOpen, onClose, setLoading }) => {
   // State from your request
   const [assets, setAssets] = useState([]);
   const [selectedAssetId, setSelectedAssetId] = useState('');
@@ -77,7 +77,9 @@ const InvestModal = ({ isOpen, onClose }) => {
       );
 
       // In a real app, you'd probably show a success toast instead of an alert
+      setLoading(true);
       alert('Investment successful! Your portfolio has been updated.');
+
       onClose();
     } catch (err) {
       console.error(err);
