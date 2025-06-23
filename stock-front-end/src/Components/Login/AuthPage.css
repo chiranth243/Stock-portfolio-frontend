@@ -256,26 +256,21 @@
     max-width: 80%;
     box-shadow: none;
   }
-
   .auth-form-section,
   .auth-welcome-section {
     padding: 2rem 1.5rem;
   }
-
   .auth-form {
     width: 75%;
   }
-
   .welcome-nav {
     right: 2rem;
     top: 1.5rem;
   }
-
   .welcome-text h1 {
     font-size: 2.5rem;
   }
-
-  /* 
+/* 
   .form-input{
     width: 70%;
   } */
@@ -288,56 +283,46 @@
     max-width: 100vw;
     box-shadow: none;
   }
-
   .auth-form-section,
   .auth-welcome-section {
     padding: 1.2rem 0.5rem;
   }
-
   .auth-form {
     width: 75%;
   }
-
   .user-icon {
     width: 48px;
     height: 48px;
     margin-bottom: 1.2rem;
   }
-
   .user-icon svg {
     width: 24px;
     height: 24px;
   }
-
   .welcome-bg-svg {
     width: 200vw;
     height: 200vw;
     min-width: 100vw;
     min-height: 100vw;
   }
-
   .welcome-text h1 {
     font-size: 1.5rem;
   }
-
   .welcome-nav {
     right: 1rem;
     top: 1rem;
     gap: 1rem;
   }
-
   .auth-button {
     width: 100%;
     margin-left: 0;
   }
-
   .form-input {
     width: 90%;
   }
-
-  .auth-welcome-section {
-    width: 100px;
-  }
+      .auth-welcome-section{
+        min-height: 100px;
+      }
 }
 
 /* Stack form and welcome vertically on small screens */
@@ -346,7 +331,6 @@
     display: flex;
     flex-direction: column;
   }
-
   .auth-welcome-section {
     order: -1;
     min-height: 180px;
