@@ -1,10 +1,10 @@
 import React from 'react';
 import Navbar from './Navbar';
 
-function Layout ({ children }){
+function Layout ({children, onInvestClick }){
   return (
     <>
-      <Navbar />
+      <Navbar onInvestClick={onInvestClick} />
       <main>{children}</main>
     </>
   );

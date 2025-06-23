@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './Components/Dashboard';
 import Layout from './Components/Layouts/Layout';
 import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute';
-import CreatePortfolio from './Components/Portfolio/CreatePortfolio';
 import { getCurrentUser } from './Components/utils/auth';
 import Signup from './Components/Login/Signup';
 
 function Main() {
-  const token = localStorage.getItem('token');
-  const user = getCurrentUser();
-  console.log(user);
+  const [isInvestModalOpen, setInvestModalOpen] = useState(false);
   return (
     <Router>
       <Routes>
@@ -21,20 +18,11 @@ function Main() {
           path="/dashboard"
           element={
             <PrivateRoute>
-              <Layout>
-                <Dashboard />
+              <Layout onInvestClick={() => setInvestModalOpen(true)}>
+                <Dashboard isInvestModalOpen={isInvestModalOpen}  onClose={() => setInvestModalOpen(false)} />
               </Layout>
             </PrivateRoute>
           }
-        />
-        <Route
-          path="/create-portfolio"
-          element={
-            <PrivateRoute>
-              <Layout>
-                <CreatePortfolio token={token} userId={user} />
-              </Layout>
-            </PrivateRoute>}
         />
         <Route path="*" element={<Login />} />
       </Routes>
