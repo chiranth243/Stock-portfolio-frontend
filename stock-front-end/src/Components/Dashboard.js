@@ -10,8 +10,7 @@ import Sidebar from './DashboardComponents/Sidebar';
 import MainContent from './DashboardComponents/MainContent';
 import { generateMockHistory } from './DashboardComponents/generateMockhistory';
 import InvestModal from './Invest/InvestModal';
-
-const socket = io('http://localhost:5000');
+import socket from '../utils/socket';
 
 function Dashboard({isInvestModalOpen = false, onClose}) {
   const [portfolio, setPortfolio] = useState(null);
